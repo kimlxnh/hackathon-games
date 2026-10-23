@@ -137,11 +137,13 @@ function draw(){
             if (humanCards[dealtCard]!==0){
             humanDrawn = dealtCard
             count ++
+            humanCards[dealtCard]--
             }
         } else if (count == 1){
             if (botCards[dealtCard]!==0){
             botDrawn = dealtCard
             count ++
+            botCards[dealtCard]--
             }
         }
     }
@@ -150,6 +152,7 @@ function draw(){
 
 
 draw()
+
 
 //console.log(humanCards)
 //console.log(botCards)

@@ -9,4 +9,4 @@ Our game is a simple rock, paper and scissors game. It takes a user input and pl
 - Paper beats rock, and loses against scissors
 - Scissors beats paper, and loses against rock
 
-By collabroators: Kim Vu and Luke Oakins.
+By collaborators: Kim Vu and Luke Oakins.

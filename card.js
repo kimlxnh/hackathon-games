@@ -104,34 +104,34 @@ function draw(){
     let humanDrawn = ''
     let botDrawn = ''
     while (count<=1){
-    drawCard = Math.floor(Math.random()*12)
-            if (drawCard == 0){
-            dealtCard = "Ace"
-            } else if (drawCard == 1){
-                dealtCard = "2"
-            } else if (drawCard == 2){
-                dealtCard = "3"
-            } else if (drawCard == 3){
-                dealtCard = "4"
-            } else if (drawCard == 4){
-                dealtCard = "5"
-            } else if (drawCard == 5){
-                dealtCard = "6"
-            } else if (drawCard == 6){
-                dealtCard = "7"
-            } else if (drawCard == 7){
-                dealtCard = "8"
-            } else if (drawCard == 8){
-                dealtCard = "9"
-            } else if (drawCard == 9){
-                dealtCard = "10"
-            } else if (drawCard == 10){
-                dealtCard = "Jack"
-            } else if (drawCard == 11){
-                dealtCard = "Queen"
-            } else if (drawCard == 12){
-                dealtCard = "King"
-            }
+        drawCard = Math.floor(Math.random()*13)
+        if (drawCard == 0){
+        dealtCard = "Ace"
+        } else if (drawCard == 1){
+            dealtCard = "2"
+        } else if (drawCard == 2){
+            dealtCard = "3"
+        } else if (drawCard == 3){
+            dealtCard = "4"
+        } else if (drawCard == 4){
+            dealtCard = "5"
+        } else if (drawCard == 5){
+            dealtCard = "6"
+        } else if (drawCard == 6){
+            dealtCard = "7"
+        } else if (drawCard == 7){
+            dealtCard = "8"
+        } else if (drawCard == 8){
+            dealtCard = "9"
+        } else if (drawCard == 9){
+            dealtCard = "10"
+        } else if (drawCard == 10){
+            dealtCard = "Jack"
+        } else if (drawCard == 11){
+            dealtCard = "Queen"
+        } else if (drawCard == 12){
+            dealtCard = "King"
+        }
 
         if (count == 0){
             if (humanCards[dealtCard]!==0){
@@ -147,11 +147,67 @@ function draw(){
             }
         }
     }
-    console.log("Your card is " + humanDrawn + ',' + "Your opponent's card is " + botDrawn)
+    return [humanDrawn, botDrawn]
+}
+
+function compare(humanCard, botCard){
+    let count = 0
+    let humanVal = 0
+    let botVal = 0
+    while (count < 2){
+        if (count == 0){
+            humanVal = deckTotal[humanCard].value
+            count ++
+        } else if (count == 1){
+            botVal = deckTotal[botCard].value
+            count ++
+        }
+    }
+    if (humanVal > botVal){
+        return 1
+    } else{
+        return 0
+    }
+
+}
+
+let running = true
+let totalRound = 1
+let humanWins = 0
+let botWins = 0
+while (running === true){
+    let humanResult = ""
+    let botResult = ""
+    let roundResult = 0
+    
+    dealing();
+    [humanResult, botResult] = draw()
+    console.log("Your card is: " + humanResult + " , " + "your opponents card is: " + botResult)
+    roundResult = compare(humanResult, botResult)
+    if (roundResult === 1){
+        console.log("you win round: " + totalRound)
+        humanWins ++
+        totalRound ++
+    } else if(roundResult === 0){
+        console.log("you lost round: " + totalRound)
+        totalRound ++
+        botWins ++
+    }
+    if (totalRound > 26){
+        if (humanWins > botWins){
+            console.log("you win")
+            running = false
+        } else if(botWins > humanWins){
+            console.log("you lose")
+            running = false
+        } else{
+            console.log("you draw")
+            running = false
+        }
+    }
 }
 
 
-draw()
 
 
 //console.log(humanCards)

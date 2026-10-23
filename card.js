@@ -97,12 +97,60 @@ function dealing(){
 //     }
 // }
 dealing()
-console.log(humanCards)
-console.log(botCards)
-console.log(deckTotal)
+
+function draw(){
+    let count = 0
+    let dealtCard = ''
+    let humanDrawn = ''
+    let botDrawn = ''
+    while (count<=1){
+    drawCard = Math.floor(Math.random()*12)
+            if (drawCard == 0){
+            dealtCard = "Ace"
+            } else if (drawCard == 1){
+                dealtCard = "2"
+            } else if (drawCard == 2){
+                dealtCard = "3"
+            } else if (drawCard == 3){
+                dealtCard = "4"
+            } else if (drawCard == 4){
+                dealtCard = "5"
+            } else if (drawCard == 5){
+                dealtCard = "6"
+            } else if (drawCard == 6){
+                dealtCard = "7"
+            } else if (drawCard == 7){
+                dealtCard = "8"
+            } else if (drawCard == 8){
+                dealtCard = "9"
+            } else if (drawCard == 9){
+                dealtCard = "10"
+            } else if (drawCard == 10){
+                dealtCard = "Jack"
+            } else if (drawCard == 11){
+                dealtCard = "Queen"
+            } else if (drawCard == 12){
+                dealtCard = "King"
+            }
+
+        if (count == 0){
+            if (humanCards[dealtCard]!==0){
+            humanDrawn = dealtCard
+            count ++
+            }
+        } else if (count == 1){
+            if (botCards[dealtCard]!==0){
+            botDrawn = dealtCard
+            count ++
+            }
+        }
+    }
+    console.log("Your card is " + humanDrawn + ',' + "Your opponent's card is " + botDrawn)
+}
 
 
+draw()
 
-
-
-
+//console.log(humanCards)
+//console.log(botCards)
+//console.log(deckTotal)

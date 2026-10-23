@@ -17,19 +17,19 @@ let deckTotal = {
 }
 const deckSize = 52
 let humanCards = {
-    Ace: {playerCount:0},
-    King:{playerCount:0},
-    Queen:{playerCount:0},
-    Jack:{playerCount:0},
-    10:{playerCount:0},
-    9:{playerCount:0},
-    8:{playerCount:0},
-    7:{playerCount:0},
-    6:{playerCount:0},
-    5:{playerCount:0},
-    4:{playerCount:0},
-    3:{playerCount:0},
-    2:{playerCount:0},
+    Ace: 0,
+    King:0,
+    Queen:0,
+    Jack:0,
+    10:0,
+    9:0,
+    8:0,
+    7:0,
+    6:0,
+    5:0,
+    4:0,
+    3:0,
+    2:0,
 }
 let botCards = {
     Ace: {count:0},
@@ -57,8 +57,16 @@ function dealing(){
         for( let[cardName,{value,count}] of Object.entries(deckTotal)){
             if (giveRandom == 0){
                 if (totalPlayer < 26){
-                    if (count > 0){
-                        count = count-1
+                    for(let [pCardName, playerCount] of Object.entries(humanCards)){
+                        if (count > 0){
+                            count = count-1
+                            if (pCardName === cardName){
+                                playerCount ++
+                            }
+                            }
+                
+                        
+                        
                     }
 
 
@@ -69,6 +77,16 @@ function dealing(){
             
         }
 
+}
+let target = "King"
+for (let pCardName of Object.keys(humanCards)){
+    if (pCardName === target ){
+        humanCards[pCardName] ++
     }
+}
+console.log(humanCards)
+
+
+
 
 
